@@ -139,4 +139,13 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 .notice { padding: 14px 16px; border-radius: 12px; background: var(--brand-soft); color: var(--ink); }
 .notice.err { background: color-mix(in srgb, var(--danger) 12%, var(--surface)); }
 .req { color: var(--danger); }
+.paid-next {
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: 20px; z-index: 10;
+  width: min(560px, calc(100% - 32px)); display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 10px; padding: 12px 14px 12px 18px; border-radius: 16px;
+  background: var(--surface); border: 2px solid var(--brand); box-shadow: 0 10px 30px rgb(0 0 0 / .18);
+  font-weight: 600;
+}
+@media (max-width: 640px) { .paid-next { bottom: calc(12px + env(safe-area-inset-bottom)); } }
+body.paid-shown .sticky-cta { display: none !important; }
 [hidden] { display: none !important; }

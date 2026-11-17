@@ -33,6 +33,20 @@
     }
   });
 
+  // A razorpay.me personal link has no fixed amount and no redirect back to us. Open it in a new
+  // tab, tell the payer the amount, and offer the onboarding form from this tab.
+  var personalLink = /^https:\/\/(www\.)?razorpay\.me\//.test(C.PAYMENT_URL || "");
+  var next = document.getElementById("paid-next");
+  if (personalLink) {
+    document.querySelectorAll("[data-amount-hint]").forEach(function (el) { el.hidden = false; });
+    document.querySelectorAll("[data-reserve]").forEach(function (a) {
+      a.target = "_blank";
+      a.addEventListener("click", function () {
+        if (next) { next.hidden = false; document.body.classList.add("paid-shown"); }
+      });
+    });
+  }
+
   document.querySelectorAll("[data-whatsapp]").forEach(function (a) {
     var href = whatsappLink(a.getAttribute("data-whatsapp") || "Hi, I have a question about ClinicRelay.");
     if (href) { a.href = href; a.rel = "noopener"; } else { a.hidden = true; }

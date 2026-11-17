@@ -25,6 +25,10 @@ Node 18+ and Python 3. No npm install needed.
 1. **Razorpay**: Payment Pages → create a page. Set the amount to `DEPOSIT_INR` and add the fields
    WhatsApp number (required), Email, Clinic name (required), City (required). After payment,
    redirect to `https://<your-site>/welcome.html`. Copy the page link into `PAYMENT_URL`.
+   *Quick alternative:* a `https://razorpay.me/@handle` personal link also works. It has no fixed
+   amount, no fields and no redirect, so the site opens it in a new tab, asks the payer to enter
+   `DEPOSIT_INR`, and shows "Paid? Continue to clinic details →". Match payments in the Razorpay
+   dashboard by amount and time. Switch to a Payment Page when you can.
 2. **Google Sheet**: Extensions → Apps Script, paste `apps-script/onboarding.gs`. Deploy → New
    deployment → Web app (Execute as: Me; Who has access: Anyone). Copy the `/exec` URL into
    `ONBOARDING_ENDPOINT`.

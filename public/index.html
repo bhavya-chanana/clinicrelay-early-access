@@ -29,8 +29,11 @@
           <a class="btn" data-reserve href="#offer"><span>Reserve for <span data-cfg="DEPOSIT_INR">₹999</span> (refundable)</span></a>
           <a class="btn ghost" href="#how">How it works</a>
         </div>
+        <p class="fine" data-amount-hint hidden style="margin-top:14px"><strong>On the Razorpay page, enter
+          <span data-cfg="DEPOSIT_INR">₹999</span></strong> and add your clinic name in the note.</p>
         <p class="fine" style="margin-top:14px">Takes under a minute with UPI. The full amount comes off your first bill,
-          and we refund it on request any time before you go live.</p>
+          and we refund it on request any time before you go live.
+          <a href="welcome.html">Already paid? Add your clinic details →</a></p>
       </div>
     </section>
 
@@ -61,6 +64,7 @@
             <p class="fine" style="margin:6px 0 20px"><span class="strike" data-cfg="LIST_PRICE_INR">₹2,499</span> list price ·
               locked for <span data-cfg="FOUNDING_LOCK_MONTHS">12</span> months · plus GST</p>
             <a class="btn" data-reserve href="#offer" style="width:100%"><span>Reserve for <span data-cfg="DEPOSIT_INR">₹999</span></span></a>
+            <p class="fine" data-amount-hint hidden style="margin-top:10px"><strong>Enter <span data-cfg="DEPOSIT_INR">₹999</span> on the Razorpay page.</strong></p>
             <p class="fine" style="margin-top:10px">Refundable until go-live · credited against your first bill · UPI, card or netbanking via Razorpay</p>
           </div>
           <ul class="ticks">
@@ -118,6 +122,11 @@
       <span>Payments are processed by Razorpay. We never see your card or UPI details.</span>
     </div>
   </footer>
+
+  <div id="paid-next" class="paid-next" hidden role="status">
+    <span>Paid <span data-cfg="DEPOSIT_INR">₹999</span> on Razorpay?</span>
+    <a class="btn small" href="welcome.html">Continue to clinic details →</a>
+  </div>
 
   <div class="sticky-cta"><a class="btn" data-reserve href="#offer"><span>Reserve for <span data-cfg="DEPOSIT_INR">₹999</span> · refundable</span></a></div>
 
