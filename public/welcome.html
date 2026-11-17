@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome, Founding Clinic</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f6b50'/%3E%3Cpath d='M16 8v16M8 16h16' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap narrow"><a class="logo" href="./">Clinic<span>Relay</span></a></div>
+  </header>
+
+  <main class="wrap narrow">
+    <section style="padding-top:12px">
+      <span class="eyebrow">Spot reserved</span>
+      <h1 style="font-size:clamp(1.8rem,4.5vw,2.6rem)">Thank you. You're a founding clinic.</h1>
+      <p class="lede">Razorpay has emailed your receipt. Please answer a few questions (about 2 minutes) so
+        we can set up your clinic before we meet. Only your WhatsApp number is required.</p>
+
+      <div id="done" class="notice" hidden role="status">
+        <strong>Got it. Thank you!</strong> We'll message you on WhatsApp within 2 working days to fix your setup date.
+        <span id="done-extra"></span>
+      </div>
+
+      <form id="onboard" class="onboard card" novalidate>
+        <div class="field">
+          <label for="phone">WhatsApp number you paid with <span class="req">*</span></label>
+          <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required
+                 placeholder="98765 43210" pattern="[0-9+\s\-]{10,16}">
+          <p class="hint">We use this to match your payment.</p>
+        </div>
+
+        <div class="two">
+          <div class="field"><label for="doctor_name">Your name</label>
+            <input id="doctor_name" name="doctor_name" type="text" autocomplete="name" placeholder="Dr. A. Sharma"></div>
+          <div class="field"><label for="role">Your role</label>
+            <select id="role" name="role">
+              <option value="">Choose…</option>
+              <option>Doctor and owner</option><option>Doctor</option><option>Clinic manager</option>
+              <option>Front desk</option><option>Other</option>
+            </select></div>
+        </div>
+
+        <div class="two">
+          <div class="field"><label for="clinic_name">Clinic name</label>
+            <input id="clinic_name" name="clinic_name" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="city">Area and city</label>
+            <input id="city" name="city" type="text" placeholder="HSR Layout, Bengaluru"></div>
+        </div>
+
+        <div class="field"><label for="specialty">Specialty</label>
+          <select id="specialty" name="specialty">
+            <option value="">Choose…</option>
+            <option>General practice / family medicine</option><option>Paediatrics</option>
+            <option>Dermatology</option><option>Dental</option><option>Gynaecology</option>
+            <option>ENT</option><option>Orthopaedics</option><option>Physiotherapy</option>
+            <option>Multi-specialty</option><option>Other</option>
+          </select></div>
+
+        <div class="two">
+          <div class="field"><label for="doctors">Doctors</label>
+            <input id="doctors" name="doctors" type="number" min="1" max="50" inputmode="numeric" placeholder="1"></div>
+          <div class="field"><label for="staff">Front-desk / other staff</label>
+            <input id="staff" name="staff" type="number" min="0" max="50" inputmode="numeric" placeholder="2"></div>
+        </div>
+
+        <div class="field"><label for="patients_per_day">Patients on a typical day</label>
+          <select id="patients_per_day" name="patients_per_day">
+            <option value="">Choose…</option><option>Under 20</option><option>20–40</option>
+            <option>40–80</option><option>80+</option>
+          </select></div>
+
+        <fieldset>
+          <legend>What do you use today?</legend>
+          <div class="chips">
+            <label><input type="checkbox" name="current_tools" value="Paper register"> Paper register</label>
+            <label><input type="checkbox" name="current_tools" value="Handwritten Rx"> Handwritten Rx</label>
+            <label><input type="checkbox" name="current_tools" value="Excel / Sheets"> Excel / Sheets</label>
+            <label><input type="checkbox" name="current_tools" value="Eka Care"> Eka Care</label>
+            <label><input type="checkbox" name="current_tools" value="Practo"> Practo</label>
+            <label><input type="checkbox" name="current_tools" value="Other software"> Other software</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>What should we fix first?</legend>
+          <div class="chips">
+            <label><input type="checkbox" name="priorities" value="Queue and tokens"> Queue and tokens</label>
+            <label><input type="checkbox" name="priorities" value="Prescriptions"> Prescriptions</label>
+            <label><input type="checkbox" name="priorities" value="Receipts and cash"> Receipts and cash</label>
+            <label><input type="checkbox" name="priorities" value="Reminders and follow-ups"> Reminders and follow-ups</label>
+            <label><input type="checkbox" name="priorities" value="Missed calls"> Missed calls</label>
+            <label><input type="checkbox" name="priorities" value="Reports"> Reports</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Languages your patients use</legend>
+          <div class="chips">
+            <label><input type="checkbox" name="languages" value="English"> English</label>
+            <label><input type="checkbox" name="languages" value="Hindi"> Hindi</label>
+            <label><input type="checkbox" name="languages" value="Kannada"> Kannada</label>
+            <label><input type="checkbox" name="languages" value="Tamil"> Tamil</label>
+            <label><input type="checkbox" name="languages" value="Telugu"> Telugu</label>
+            <label><input type="checkbox" name="languages" value="Marathi"> Marathi</label>
+            <label><input type="checkbox" name="languages" value="Other"> Other</label>
+          </div>
+        </fieldset>
+
+        <div class="field"><label for="setup_time">Best time for a 30-minute setup call</label>
+          <select id="setup_time" name="setup_time">
+            <option value="">Choose…</option><option>Weekday morning</option><option>Weekday afternoon</option>
+            <option>Weekday evening</option><option>Sunday</option>
+          </select></div>
+
+        <div class="field"><label for="notes">Anything else we should know?</label>
+          <textarea id="notes" name="notes" placeholder="Clinic hours, your biggest daily headache, how you heard of us…"></textarea>
+          <p class="hint">Please don't include any patient information.</p></div>
+
+        <div id="err" class="notice err" hidden role="alert"></div>
+
+        <div class="cta-row">
+          <button class="btn" type="submit" id="submit">Send details</button>
+          <a class="btn ghost" id="wa-send" href="#" hidden>Send on WhatsApp instead</a>
+        </div>
+        <p class="fine" style="margin:0">Short on time? Just send your number now. We'll ask for the rest on WhatsApp.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap narrow">
+      <span data-contact-line>Questions? <a data-whatsapp="Hi, I just reserved a ClinicRelay founding spot." href="#">WhatsApp us</a> <a data-email href="#"></a></span>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="site.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    var S = window.ClinicRelaySite, C = S.config;
+    var form = document.getElementById("onboard");
+    var err = document.getElementById("err");
+    var submit = document.getElementById("submit");
+    var waBtn = document.getElementById("wa-send");
+    var DRAFT_KEY = "clinicrelay-onboarding-draft";
+
+    // Razorpay (or a manual link) may append payment details / a phone number to the URL.
+    var params = new URLSearchParams(location.search);
+    var payment = {};
+    params.forEach(function (v, k) { if (/^razorpay_/.test(k)) payment[k] = v.slice(0, 64); });
+    if (params.get("phone")) form.phone.value = params.get("phone").slice(0, 16);
+
+    // Restore an unsent draft (per-browser convenience only).
+    try {
+      var draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null");
+      if (draft) Object.keys(draft).forEach(function (k) {
+        var els = form.querySelectorAll('[name="' + k + '"]');
+        els.forEach(function (el) {
+          if (el.type === "checkbox") el.checked = [].concat(draft[k]).indexOf(el.value) !== -1;
+          else if (!el.value) el.value = draft[k];
+        });
+      });
+    } catch (e) { /* storage unavailable */ }
+
+    function collect() {
+      var out = {};
+      new FormData(form).forEach(function (v, k) {
+        v = String(v).trim().slice(0, 1000);
+        if (!v) return;
+        out[k] = out[k] ? out[k] + ", " + v : v;
+      });
+      return out;
+    }
+    function saveDraft() {
+      try {
+        var d = {};
+        new FormData(form).forEach(function (v, k) {
+          if (form.querySelector('[name="' + k + '"]').type === "checkbox") (d[k] = d[k] || []).push(v);
+          else d[k] = v;
+        });
+        localStorage.setItem(DRAFT_KEY, JSON.stringify(d));
+      } catch (e) { /* ignore */ }
+    }
+    form.addEventListener("input", saveDraft);
+    form.addEventListener("change", saveDraft);
+
+    var labels = {
+      phone: "WhatsApp", doctor_name: "Name", role: "Role", clinic_name: "Clinic", city: "City",
+      specialty: "Specialty", doctors: "Doctors", staff: "Staff", patients_per_day: "Patients/day",
+      current_tools: "Uses today", priorities: "Fix first", languages: "Languages",
+      setup_time: "Setup call", notes: "Notes"
+    };
+    function asWhatsappText(data) {
+      var lines = ["ClinicRelay founding clinic, onboarding details:"];
+      Object.keys(labels).forEach(function (k) { if (data[k]) lines.push(labels[k] + ": " + data[k]); });
+      if (payment.razorpay_payment_id) lines.push("Payment: " + payment.razorpay_payment_id);
+      return lines.join("\n");
+    }
+    function refreshWhatsapp() {
+      var href = S.whatsappLink(asWhatsappText(collect()));
+      if (href) { waBtn.href = href; waBtn.rel = "noopener"; waBtn.target = "_blank"; waBtn.hidden = false; }
+      else { waBtn.hidden = true; }
+    }
+    form.addEventListener("change", refreshWhatsapp);
+    form.addEventListener("input", refreshWhatsapp);
+    refreshWhatsapp();
+
+    function finish(extra) {
+      try { localStorage.removeItem(DRAFT_KEY); } catch (e) { /* ignore */ }
+      form.hidden = true;
+      document.getElementById("done-extra").textContent = extra || "";
+      document.getElementById("done").hidden = false;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    function fail(msg) { err.textContent = msg; err.hidden = false; }
+
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      err.hidden = true;
+      var phone = form.phone.value.replace(/[^\d+]/g, "");
+      if (phone.replace(/\D/g, "").length < 10) {
+        fail("Please enter the WhatsApp number you paid with.");
+        form.phone.focus();
+        return;
+      }
+      if (!C.ONBOARDING_ENDPOINT) {
+        fail(S.whatsappLink("x") ? "Please use “Send on WhatsApp instead” for now. Online form submission isn't set up yet."
+                                 : "Online form submission isn't set up yet. Please email us these details.");
+        return;
+      }
+      var data = collect();
+      Object.keys(payment).forEach(function (k) { data[k] = payment[k]; });
+      data.submitted_at = new Date().toISOString();
+      data.page = location.pathname;
+
+      submit.disabled = true; submit.textContent = "Sending…";
+      // Apps Script web apps don't send CORS headers; a no-cors form POST still delivers the row.
+      fetch(C.ONBOARDING_ENDPOINT, {
+        method: "POST", mode: "no-cors",
+        body: new URLSearchParams(data)
+      }).then(function () {
+        finish();
+      }).catch(function () {
+        submit.disabled = false; submit.textContent = "Send details";
+        fail("That didn't go through. Check your connection and try again" +
+             (S.whatsappLink("x") ? ", or send it on WhatsApp instead." : "."));
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

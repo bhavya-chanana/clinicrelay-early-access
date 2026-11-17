@@ -1,0 +1,9 @@
+{
+  "name": "clinicrelay-early-access",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/build.mjs && python3 -m http.server -d dist 8080"
+  }
+}

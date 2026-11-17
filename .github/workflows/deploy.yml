@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Build with repo Variables
+        env:
+          PAYMENT_URL: ${{ vars.PAYMENT_URL }}
+          ONBOARDING_ENDPOINT: ${{ vars.ONBOARDING_ENDPOINT }}
+          WHATSAPP_NUMBER: ${{ vars.WHATSAPP_NUMBER }}
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+          DEPOSIT_INR: ${{ vars.DEPOSIT_INR }}
+          FOUNDING_PRICE_INR: ${{ vars.FOUNDING_PRICE_INR }}
+          LIST_PRICE_INR: ${{ vars.LIST_PRICE_INR }}
+          SETUP_FEE_INR: ${{ vars.SETUP_FEE_INR }}
+          FOUNDING_LOCK_MONTHS: ${{ vars.FOUNDING_LOCK_MONTHS }}
+          FOUNDING_SPOTS: ${{ vars.FOUNDING_SPOTS }}
+        run: node scripts/build.mjs
+      - name: Add custom domain
+        if: ${{ vars.CUSTOM_DOMAIN != '' }}
+        env:
+          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+        run: printf '%s\n' "$CUSTOM_DOMAIN" > dist/CNAME
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
