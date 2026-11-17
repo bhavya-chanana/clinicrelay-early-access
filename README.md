@@ -54,8 +54,8 @@ don't need to touch the code.
   city). The longer onboarding questionnaire comes right after payment, while intent is highest.
   Typeform/Tally "thank-you redirect" flows work this way.
 - **Founding-member perks instead of discounts that never end.** Lock the price for a fixed period,
-  waive setup, and give a direct line to the founder. The BRD already has a 12-month founding rate
-  (§18).
+  waive setup, and give a direct line to the founder. ClinicRelay uses a 6-month founding rate
+  (ClinicRelay BRD §18).
 - **Onboard quickly.** Conversion drops sharply when people wait months after paying, so batches
   should be small and dated.
 - **India specifics.** UPI is the default way to pay. Razorpay Payment Pages need no code or
